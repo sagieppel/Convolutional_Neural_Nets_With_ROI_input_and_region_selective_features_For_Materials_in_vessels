@@ -56,6 +56,7 @@ c. Phase type: Similar to above but distinguish between liquid and solid regions
 d. Fine grain phase type: Similar to above but distinguish between fine grain specific phases regions of the filled vessel. For each pixel assign one of 15 values: 1) BackGround. 2) Vessel. 3) Liquid. 4) Liquid Phase two. 5) Suspension. 6) Emulsion. 7) Foam. 8) Solid. 9) Gel. 10) Powder. 11) Granular. 12) Bulk. 13) Bulk Liquid. 14) Solid Phase two. 15) Vapor.
 
 ![](/Figure2.jpg)
+
 Figure 2) Prediction of the net for the dataset test are given below (the roi input is the vessel region)
 
 ## Background information
@@ -63,5 +64,5 @@ The net is based on fully convolutional neural net described in the paper Fully 
 https://github.com/shekkizh/FCN.tensorflow by Sarath Shekkizhar with MIT licence. The net is based on the pretrained VGG16 model by Marvin Teichmann
 
 ## Thanks
-I would like to thank Alexandra Emanuel and  Mor Bismuth for their work on labeling of the dataset. I also like to thank the creators of the Youtube channels NileRed, NurdeRage and ChemPlayer for allowing the use of frames from their videos for creating this dataset and this paper. 
+I would like to thank Alexandra Emanuel and  Mor Bismuth for their work on labeling of the dataset. I also like to thank the creators of the Youtube channels NileRed, NurdeRage and ChemPlayer for allowing the use of frames from their videos for creating this dataset. 
 
