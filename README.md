@@ -1,5 +1,5 @@
 # Focusing attention of Fully convolutional neural networks on Region of interest (ROI) input map. For recognition of materials within glass vessels, in chemistry laboratory setting.
-This project contain code for fully convolutional neural network (FCN) for semantic segmentation with region of interest mask as additional input (figure 1). The net receive image and ROI as binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several level of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supply dataset for materials inside vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrary shaped region of interest (ROI) is given.
+This project contains code for a fully convolutional neural network (FCN) for semantic segmentation with a region of interest map as an additional input (figure 1). The net receives image and ROI as a binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several levels of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supplies dataset for materials inside the vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrarily shaped region of interest (ROI) is given.
 
 
 ![](/Figure1.png)
@@ -31,8 +31,8 @@ Run: Train.py
 Run: Evaluate_Net_IOU.py
 
 ### Notes and issues
-1) Make sure the /Data_Zoo folder  contain the downloaded dataset for for materials in vessels. Also the Label_Dir folder point to  this folder and the Image_Dir should point to test images subfolder of this dataset (should the default code setting) 
-2) If  running inference or evaluation make sure that the /log folder contain a trained net you can either download trained model or trained it yourself. 
+1) Make sure the /Data_Zoo folder contain the downloaded dataset for materials in vessels. Also, the Label_Dir folder point to  this folder and the Image_Dir should point to test images subfolder of this dataset (should the default code setting) 
+2) If running inference or evaluation make sure that the /log folder contains a trained net you can either download trained model or trained it yourself. 
 
 ## Detail valve filters implementation.
 The detail  implementation of the valve filters  given in Figures 1 and described below:
@@ -40,29 +40,29 @@ The detail  implementation of the valve filters  given in Figures 1 and describe
 1) The ROI map is inserted to the net along with the image. The ROI map is represented as a binary image with pixels corresponding to ROI marked 1 and the rest marked 0. 
 2) A set of image filters is convolved (with bias addition) with the image to give a feature map. 
 3) A set of valve filters convolved with the ROI map to give a relevance map with the same size and dimension as the feature map (again with bias addition).
-4) The feature map is multiplied element wise by the relevance map. Hence,  Each element in the relevance map is multiplied by the corresponding element  in the feature map to give normalized feature map. 
+4) The feature map is multiplied element wise by the relevance map. Hence,  Each element in the relevance map is multiplied by the corresponding element in the feature map to give normalized feature map. 
 5) The normalized feature map is then passed through a Rectified Linear Unit (ReLU)  which zero out any negative map element. The output is used as input for the next layer of the net.  
 
-The net in this case is standard fully convolutional neural net for semantic segmentation.
+The net, in this case, is standard fully convolutional neural net for semantic segmentation.
 In this way each valve filter act as kind of a valve that regulates the activation the corresponding image filter in different regions of the image. Hence, the valve filter will inhibit some filters in the background zone and others in the ROI zone. 
 The valve filters weights are learned by the net in the same way the image filters are learned. Therefore the net learns both the features and the region for which they are relevant.   
 In the current implementation, the valve filter act only on the first layer of the convolutional neural net and the rest of the net remained unchanged. 
 
 ## Details input/output
-The fully convolutional neural network receive an image with material in a glassware vessel and perform semantic segmentation of the image, such that that each pixel the in the image is assigned several labels. The network performed the pixelwise labeling in several level of class granularity and return for each level an image where the value of each pixel is the phase/material/object of this pixel in the image. All the predictions are generated simultaneously in one iteration of the net. The output segmentation maps/images are as following (See image):
-a. Vessel/Background: For each pixel assign value of 1 if it in the vessel and 0 otherwise.
+The fully convolutional neural network receives an image with the material in a glassware vessel and performs semantic segmentation of the image, such that each pixel the in the image is assigned several labels. The network performed the pixel-wise labeling in several levels of class granularity and return for each level an image where the value of each pixel is the phase/material/object of this pixel in the image. All the predictions are generated simultaneously in one iteration of the net. The output segmentation maps/images are as following (See image):
+a. Vessel/Background: For each pixel assign a value of 1 if it in the vessel and 0 otherwise.
 b. Filled/Empty: similar to above but also distinguish between filled and empty region of the vessel. For each pixel assign one of the 3 values: 0) Background, 1) Empty vessel. 2) Filled vessel
 c. Phase type: Similar to above but distinguish between liquid and solid regions of the filled vessel. For each pixel assign one of the 4 values: 0) Background, 1) Empty vessel. 2) Liquid. 3) Solid.
 d. Fine grain phase type: Similar to above but distinguish between fine grain specific phases regions of the filled vessel. For each pixel assign one of 15 values: 1) BackGround. 2) Vessel. 3) Liquid. 4) Liquid Phase two. 5) Suspension. 6) Emulsion. 7) Foam. 8) Solid. 9) Gel. 10) Powder. 11) Granular. 12) Bulk. 13) Bulk Liquid. 14) Solid Phase two. 15) Vapor.
 
 ![](/Figure2.jpg)
 
-Figure 2) Prediction of the net for the dataset test are given below (the roi input is the vessel region)
+Figure 2) Prediction of the net for the dataset test are given below (the ROI input is the vessel region)
 
 ## Background information
-The net is based on fully convolutional neural net described in the paper Fully Convolutional Networks for Semantic Segmentation The main modification, other than the ROI input and valve filters, is that the last prediction layer is split to give prediction in several level of granularity for each pixel. Similarly training of the network was done with several loss function simultaneously one for each set of classes. See BuildNetVgg16.py for the network structure. The code is based on 
-https://github.com/shekkizh/FCN.tensorflow by Sarath Shekkizhar with MIT licence. The net is based on the pretrained VGG16 model by Marvin Teichmann
+The net is based on fully convolutional neural net described in the paper Fully Convolutional Networks for Semantic Segmentation The main modification, other than the ROI input and valve filters, is that the last prediction layer is split to give a prediction in several levels of granularity for each pixel. Similarly, training of the network was done with several loss functions simultaneously one for each set of classes. See BuildNetVgg16.py for the network structure. The code is based on 
+https://github.com/shekkizh/FCN.tensorflow by Sarath Shekkizhar with MIT license. The net is based on the pre-trained VGG16 model by Marvin Teichmann
 
-## Thanks
-I would like to thank Alexandra Emanuel and  Mor Bismuth for their work on labeling of the dataset. I also like to thank the creators of the Youtube channels NileRed, NurdeRage and ChemPlayer for allowing the use of frames from their videos for creating this dataset. 
+#### Thanks
+The images in the data set were labeled by Mor bismuth and Alexandra Emanual. Images were taken with permission from Youtube channels NileRed, NurdeRage, and ChemPlayer. 
 
