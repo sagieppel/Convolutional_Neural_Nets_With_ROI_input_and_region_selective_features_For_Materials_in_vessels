@@ -3,7 +3,7 @@ This project contains code for a fully convolutional neural network (FCN) for se
 
 Note that this code is rather complicated and made specifically for the data set of materials in vessels. 
 
-For a more simple and general purpose of implementation of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
+For a simpler and general purpose of implementation of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
 
 
 ![](/Figure1.png)
