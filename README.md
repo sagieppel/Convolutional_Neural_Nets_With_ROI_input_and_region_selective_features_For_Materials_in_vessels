@@ -2,7 +2,8 @@
 This project contains code for a fully convolutional neural network (FCN) for semantic segmentation with a region of interest map as an additional input (figure 1). The net receives image and ROI as a binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several levels of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supplies dataset for materials inside the vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrarily shaped region of interest (ROI) is given.
 
 Note that this code is rather complicated and made specifically for the data set of materials in vessels. 
-For more simple and general purpose of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
+
+For a more simple and general purpose of implementation of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
 
 
 ![](/Figure1.png)
