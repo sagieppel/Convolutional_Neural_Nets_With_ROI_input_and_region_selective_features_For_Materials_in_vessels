@@ -1,8 +1,8 @@
 # Focusing attention of Fully convolutional neural networks on Region of interest (ROI) input map. For recognition of materials within glass vessels, in chemistry laboratory setting.
-This net made specifcally for the materials in glass vessels dataset. For a simpler more general implementation of this method see [this repository](https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-)
+This net made specifcally for the [materials in glass vessels dataset](https://github.com/sagieppel/Materials-in-Vessels-data-set). For a simpler more general implementation of this method see [this repository](https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-)
 
 
-This project contains code for a fully convolutional neural network (FCN) for semantic segmentation with a region of interest map as an additional input (figure 1). The net receives image and ROI as a binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several levels of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supplies dataset for materials inside the vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrarily shaped region of interest (ROI) is given.
+This project contains code for a fully convolutional neural network (FCN) for semantic segmentation with a region of interest map as an additional input (figure 1). The net receives image and ROI as a binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several levels of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supplies (dataset)[https://github.com/sagieppel/Materials-in-Vessels-data-set] for materials inside the vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrarily shaped region of interest (ROI) is given.
 
 
 
@@ -19,7 +19,7 @@ This network was run and trained with Python 3.6  Anaconda package and Tensorflo
 ## Setup
 1) Download the code from the repository.
 2) Download pretrained vgg16 net and put in the /Model_Zoo subfolder in the main code folder. A pretrained vgg16 net can be download from here[https://drive.google.com/file/d/0B6njwynsu2hXZWcwX0FKTGJKRWs/view?usp=sharing] or from here [ftp://mi.eng.cam.ac.uk/pub/mttt2/models/vgg16.npy]
-3) Download dataset of images materials in transparent vessel and extract in /Data_Zoo folder in the main code dir. The dataset can be download from here https://drive.google.com/file/d/0B6njwynsu2hXRFpmY1pOV1A4SFE/view?usp=sharing
+3) Download (dataset)[https://github.com/sagieppel/Materials-in-Vessels-data-set] of images materials in transparent vessel and extract in /Data_Zoo folder in the main code dir. The dataset can be download from here https://drive.google.com/file/d/0B6njwynsu2hXRFpmY1pOV1A4SFE/view?usp=sharing
 4) If you are not interested in training the net then download a pre trained model and extract to /log folder in the main code dir. The pretrained model could be download from: https://drive.google.com/file/d/0B6njwynsu2hXRDMxWlBUTWFZM2c/view?usp=sharing
 
 
