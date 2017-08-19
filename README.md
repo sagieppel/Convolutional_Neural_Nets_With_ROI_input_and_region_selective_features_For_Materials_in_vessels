@@ -1,9 +1,13 @@
 # Focusing attention of Fully convolutional neural networks on Region of interest (ROI) input map. For recognition of materials within glass vessels, in chemistry laboratory setting.
 This project contains code for a fully convolutional neural network (FCN) for semantic segmentation with a region of interest map as an additional input (figure 1). The net receives image and ROI as a binary map with pixels corresponding to ROI marked 1, and produce pixel wise annotation of the ROI region of the image according to several levels of categories.  This code was specifically designed for semantic segmentation task of materials in transparent vessels were the vessel region of the image is already known. It also supplies dataset for materials inside the vessel in chemistry laboratory setting. But can be used in any case of semantic segmentation with an arbitrarily shaped region of interest (ROI) is given.
 
-Note that this code is rather complicated and made specifically for the data set of materials in vessels. 
+This code is rather complicated and made specifically for the data set of materials in vessels. 
+For a simpler and more general purpose of implementation of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
 
-For a simpler and general purpose of implementation of this method see: https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-
+$ dd
+@ 343
+* 4sd
+! 43 !
 
 
 ![](/Figure1.png)
@@ -53,6 +57,7 @@ The valve filters weights are learned by the net in the same way the image filte
 In the current implementation, the valve filter act only on the first layer of the convolutional neural net and the rest of the net remained unchanged. 
 
 ## Details input/output
+
 The fully convolutional neural network receives an image with the material in a glassware vessel and performs semantic segmentation of the image, such that each pixel the in the image is assigned several labels. The network performed the pixel-wise labeling in several levels of class granularity and return for each level an image where the value of each pixel is the phase/material/object of this pixel in the image. All the predictions are generated simultaneously in one iteration of the net. The output segmentation maps/images are as following (See image):
 a. Vessel/Background: For each pixel assign a value of 1 if it in the vessel and 0 otherwise.
 b. Filled/Empty: similar to above but also distinguish between filled and empty region of the vessel. For each pixel assign, one of the 3 values: 0) Background, 1) Empty vessel. 2) Filled vessel
