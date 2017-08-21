@@ -161,10 +161,7 @@ class Data_Reader:
             self.Epoch+=1
         batch_size=np.min([self.BatchSize,self.NumFiles-self.itr])
 
-        Sy=1
-        Sx=1
 
-#-----------Augument Images and labeles-------------------------------------------------------------------
         Images = []
         LabelsVessel = []
         LabelsOnePhase = []
@@ -189,7 +186,7 @@ class Data_Reader:
                 LabelsOnePhase = np.zeros([batch_size, Sy,Sx, 1], dtype=np.int)
                 LabelsSolidLiquid = np.zeros([batch_size, Sy,Sx, 1], dtype=np.int)
                 LabelsAllPhases = np.zeros([batch_size,Sy,Sx, 1], dtype=np.int)
-#..........Resize and strecth image and labels....................................................................
+#..........Resize image and labels....................................................................
            Img = misc.imresize(Img, [Sy,Sx], interp='bilinear')
            LBVessel = misc.imresize(LBVessel, [Sy, Sx], interp='nearest')
            LBPhase = misc.imresize(LBPhase, [Sy, Sx], interp='nearest')
