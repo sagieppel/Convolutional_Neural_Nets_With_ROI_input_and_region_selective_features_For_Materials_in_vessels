@@ -1,4 +1,6 @@
 # Focusing attention of Fully convolutional neural networks on Region of interest (ROI) input map using valve filters. For recognition of materials within glass vessels, in chemistry laboratory setting.
+
+## Note: a newer and better net for finding materials in transerent vessels can be found [here](https://github.com/sagieppel/Detecting-and-segmenting-and-classifying-materials-inside-vessels-in-images-using-convolutional-net)   
 This net made specifically for the [materials in glass vessels dataset](https://github.com/sagieppel/Materials-in-Vessels-data-set). For a simpler more general implementation of the valve filter method see [this repository](https://github.com/sagieppel/Focusing-attention-of-Fully-convolutional-neural-networks-on-Region-of-interest-ROI-input-map-)
 
 
